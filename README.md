@@ -3,6 +3,7 @@
 </p>
 
 <h1 align="center">LLMPrice</h1>
+<p align="center"><em>A Python Library for LLM Pricing Lookup</em></p>
 
 <p align="center">
   <a href="https://pypi.org/project/llmprice-kit/"><img src="https://img.shields.io/pypi/v/llmprice-kit" alt="PyPI"></a>
