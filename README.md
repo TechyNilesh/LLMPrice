@@ -4,16 +4,16 @@
 
 # LLMPrice
 
-[![PyPI version](https://img.shields.io/pypi/v/llmprice-kit)](https://pypi.org/project/llmprice/)
+[![PyPI version](https://img.shields.io/pypi/v/llmprice-kit)](https://pypi.org/project/llmprice-kit/)
 [![Downloads](https://static.pepy.tech/badge/llmprice-kit)](https://pepy.tech/project/llmprice-kit)
 [![License: MIT](https://img.shields.io/pypi/l/llmprice-kit)](https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE)
-[![Python](https://img.shields.io/pypi/pyversions/llmprice-kit)](https://pypi.org/project/llmprice/)
+[![Python](https://img.shields.io/pypi/pyversions/llmprice-kit)](https://pypi.org/project/llmprice-kit/)
 [![Data Source: LiteLLM](https://img.shields.io/badge/data%20source-LiteLLM-blue)](https://github.com/BerriAI/litellm)
 [![Auto Sync](https://img.shields.io/github/actions/workflow/status/TechyNilesh/LLMPrice/auto-sync.yml?label=daily%20sync)](https://github.com/TechyNilesh/LLMPrice/actions/workflows/auto-sync.yml)
 
-Fast, offline-first LLM pricing lookup for **2500+ models** across all major providers. Returns both Python objects and JSON.
+Fast, offline-first LLM pricing lookup for **2500+ models** across all major providers. Returns both **Python objects** and **JSON**.
 
-Auto-synced daily from [LiteLLM](https://github.com/BerriAI/litellm) pricing data via GitHub Actions. Date-based versioning (`2026.4.2`).
+Data synced daily from [LiteLLM](https://github.com/BerriAI/litellm) via GitHub Actions. Published weekly to PyPI with date-based versioning.
 
 ## Install
 
@@ -80,14 +80,23 @@ llmprice info
 
 ## How It Works
 
-- **Bundled data**: Ships with a snapshot of pricing data — works offline, zero latency
-- **Auto-sync**: Optional background refresh from LiteLLM's upstream JSON
-- **Date versioning**: Each release is tagged by date (e.g., `2026.4.2`), so `pip install llmprice-kit==2026.4.2` gives you that exact day's pricing
-- **GitHub Actions**: Runs daily, checks for upstream changes, auto-publishes to PyPI
+- **Bundled data** — Ships with a pricing snapshot, works offline with zero latency
+- **Auto-sync** — GitHub repo updated daily from LiteLLM upstream
+- **Weekly PyPI releases** — Published every Monday with date-based version (e.g., `2026.4.6`)
+- **Auto-update mode** — `LLMPrice(auto_update=True)` fetches fresh data when local copy is >1 day old
+- **Dual output** — Every query returns Python dataclass objects or JSON dicts
 
 ## Data Source
 
-Pricing data sourced from [LiteLLM's model_prices_and_context_window.json](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json), which covers 2500+ models from 15+ providers including OpenAI, Anthropic, Google, AWS Bedrock, Azure, DeepSeek, Mistral, and more.
+Pricing data sourced from [LiteLLM's model_prices_and_context_window.json](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json), covering **2500+ models** from **100+ providers** including OpenAI, Anthropic, Google, AWS Bedrock, Azure, DeepSeek, Mistral, and more.
+
+## Core Contributor
+
+<a href="https://github.com/TechyNilesh">
+  <img src="https://github.com/TechyNilesh.png" width="80" style="border-radius:50%" alt="Nilesh Verma">
+  <br>
+  <sub><b>Nilesh Verma</b></sub>
+</a>
 
 ## License
 
