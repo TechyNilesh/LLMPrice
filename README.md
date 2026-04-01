@@ -5,7 +5,7 @@
 # LLMPrice
 
 [![PyPI version](https://img.shields.io/pypi/v/llmprice-kit)](https://pypi.org/project/llmprice/)
-[![Downloads](https://static.pepy.tech/personalized-badge/llmprice-kit?period=total&units=international_system&left_color=grey&right_color=blue&left_text=downloads)](https://pepy.tech/project/llmprice-kit)
+[![Downloads](https://static.pepy.tech/badge/llmprice-kit)](https://pepy.tech/project/llmprice-kit)
 [![License: MIT](https://img.shields.io/pypi/l/llmprice-kit)](https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE)
 [![Python](https://img.shields.io/pypi/pyversions/llmprice-kit)](https://pypi.org/project/llmprice/)
 [![Data Source: LiteLLM](https://img.shields.io/badge/data%20source-LiteLLM-blue)](https://github.com/BerriAI/litellm)
