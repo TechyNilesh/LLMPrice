@@ -89,6 +89,12 @@ llmprice info
 - **Auto-update mode** — `LLMPrice(auto_update=True)` fetches fresh data when local copy is >1 day old
 - **Dual output** — Every query returns Python dataclass objects or JSON dicts
 
+## Demo Notebook
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TechyNilesh/LLMPrice/blob/main/notebooks/llmprice_demo.ipynb)
+
+Try all features interactively in Google Colab — no setup needed.
+
 ## Data Source
 
 Pricing data sourced from [LiteLLM's model_prices_and_context_window.json](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json), covering **2500+ models** from **100+ providers** including OpenAI, Anthropic, Google, AWS Bedrock, Azure, DeepSeek, Mistral, and more.
