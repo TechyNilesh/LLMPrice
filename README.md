@@ -5,12 +5,12 @@
 # LLMPrice
 
 <p align="center">
-  <a href="https://pypi.org/project/llmprice-kit/"><img src="https://img.shields.io/pypi/v/llmprice-kit?style=for-the-badge" alt="PyPI"></a>
-  <a href="https://pepy.tech/project/llmprice-kit"><img src="https://img.shields.io/pepy/dt/llmprice-kit?style=for-the-badge&label=Downloads" alt="Downloads"></a>
-  <a href="https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
-  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.9+"></a>
-  <a href="https://github.com/BerriAI/litellm"><img src="https://img.shields.io/badge/data%20source-LiteLLM-blue?style=for-the-badge" alt="Data Source: LiteLLM"></a>
-  <a href="https://github.com/TechyNilesh/LLMPrice/actions/workflows/auto-sync.yml"><img src="https://img.shields.io/github/actions/workflow/status/TechyNilesh/LLMPrice/auto-sync.yml?style=for-the-badge&label=daily%20sync" alt="Auto Sync"></a>
+  <a href="https://pypi.org/project/llmprice-kit/"><img src="https://img.shields.io/pypi/v/llmprice-kit" alt="PyPI"></a>
+  <a href="https://pepy.tech/project/llmprice-kit"><img src="https://img.shields.io/pepy/dt/llmprice-kit?label=downloads" alt="Downloads"></a>
+  <a href="https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.10+-blue?logo=python&logoColor=white" alt="Python 3.10+"></a>
+  <a href="https://github.com/BerriAI/litellm"><img src="https://img.shields.io/badge/data%20source-LiteLLM-blue" alt="Data Source: LiteLLM"></a>
+  <a href="https://github.com/TechyNilesh/LLMPrice/actions/workflows/auto-sync.yml"><img src="https://img.shields.io/github/actions/workflow/status/TechyNilesh/LLMPrice/auto-sync.yml?label=daily%20sync" alt="Auto Sync"></a>
 </p>
 
 Fast, offline-first LLM pricing lookup for **2500+ models** across all major providers. Returns both **Python objects** and **JSON**.
