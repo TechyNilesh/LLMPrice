@@ -1,0 +1,33 @@
+[project]
+name = "llmprice"
+version = "2026.4.2"
+description = "Fast, offline-first LLM pricing lookup with auto-sync from LiteLLM data. Get token costs, context windows, and capabilities for 2500+ models."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Nilesh Verma", email = "me@nileshverma.com" }
+]
+requires-python = ">=3.9"
+dependencies = [
+    "httpx>=0.24.0",
+]
+keywords = ["llm", "pricing", "openai", "anthropic", "gemini", "token", "cost", "gpt", "claude"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/TechyNilesh/LLMPrice"
+Repository = "https://github.com/TechyNilesh/LLMPrice"
+Issues = "https://github.com/TechyNilesh/LLMPrice/issues"
+
+[project.scripts]
+llmprice = "llmprice.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.9.26,<0.10.0"]
+build-backend = "uv_build"
