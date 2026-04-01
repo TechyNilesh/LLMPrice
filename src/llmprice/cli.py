@@ -48,6 +48,20 @@ def main() -> None:
         parser.print_help()
         return
 
+    # For update command, handle corrupt cache by creating LLMPrice without loading cache
+    if args.command == "update":
+        print("Fetching latest pricing data...")
+        try:
+            lp = LLMPrice()
+        except Exception:
+            # Cache may be corrupt — create a fresh instance that skips cache
+            from .core import _CACHED_DATA
+            _CACHED_DATA.unlink(missing_ok=True)
+            lp = LLMPrice()
+        lp.update()
+        print(f"Done. {lp.total_models} models loaded.")
+        return
+
     lp = LLMPrice()
 
     if args.command == "get":
@@ -82,11 +96,6 @@ def main() -> None:
         for p in lp.providers():
             count = len(lp.by_provider(p))
             print(f"{p:30s} {count:>4} models")
-
-    elif args.command == "update":
-        print("Fetching latest pricing data...")
-        lp.update()
-        print(f"Done. {lp.total_models} models loaded.")
 
     elif args.command == "info":
         print(f"Total models: {lp.total_models}")

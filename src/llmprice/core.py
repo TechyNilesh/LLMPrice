@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 import os
 import time
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
@@ -19,6 +18,18 @@ _REMOTE_URL = (
     or "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
 )
 _STALE_SECONDS = 86400  # 1 day
+
+
+def _try_load_json(path: Path) -> dict | None:
+    """Try to load JSON from a file. Returns None if invalid or missing."""
+    try:
+        with open(path, "r") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            return data
+    except (json.JSONDecodeError, OSError):
+        pass
+    return None
 
 
 class LLMPrice:
@@ -37,7 +48,11 @@ class LLMPrice:
         self._load()
 
     def _resolve_data_file(self) -> Path:
-        """Determine which data file to load."""
+        """Determine which data file to load.
+
+        When data_path is set, it takes priority only for loading —
+        auto_update still writes to the cache independently.
+        """
         if self._data_path and self._data_path.exists():
             return self._data_path
         if _CACHED_DATA.exists():
@@ -49,13 +64,26 @@ class LLMPrice:
         if self._auto_update and self._is_stale():
             try:
                 self.update()
+                return  # update already loaded the data
             except Exception:
                 pass  # fall back to local data
 
         path = self._resolve_data_file()
-        with open(path, "r") as f:
-            self._raw = json.load(f)
+        data = _try_load_json(path)
 
+        # If cache is corrupt, delete it and fall back to bundled data
+        if data is None and path == _CACHED_DATA:
+            _CACHED_DATA.unlink(missing_ok=True)
+            data = _try_load_json(_BUNDLED_DATA)
+
+        # Last resort: bundled data
+        if data is None:
+            data = _try_load_json(_BUNDLED_DATA)
+
+        if data is None:
+            raise RuntimeError("Failed to load any pricing data.")
+
+        self._raw = data
         self._models = {}
         for key, val in self._raw.items():
             if key == "sample_spec" or not isinstance(val, dict):
@@ -74,16 +102,18 @@ class LLMPrice:
         """Fetch the latest pricing data from upstream."""
         import httpx
 
-        _CACHE_DIR.mkdir(parents=True, exist_ok=True)
         resp = httpx.get(_REMOTE_URL, timeout=30, follow_redirects=True)
         resp.raise_for_status()
-        _CACHED_DATA.write_bytes(resp.content)
-        self._load_from_path(_CACHED_DATA)
 
-    def _load_from_path(self, path: Path) -> None:
-        """Reload data from a specific path."""
-        with open(path, "r") as f:
-            self._raw = json.load(f)
+        # Validate JSON before writing to cache
+        data = resp.json()
+        if not isinstance(data, dict):
+            raise ValueError("Remote data is not a valid JSON object.")
+
+        _CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        _CACHED_DATA.write_bytes(resp.content)
+
+        self._raw = data
         self._models = {}
         for key, val in self._raw.items():
             if key == "sample_spec" or not isinstance(val, dict):
@@ -171,9 +201,9 @@ class LLMPrice:
         if supports_reasoning is not None:
             results = [m for m in results if m.supports_reasoning == supports_reasoning]
         if max_input_price is not None:
-            results = [m for m in results if 0 < m.input_cost_per_1m <= max_input_price]
+            results = [m for m in results if m.input_cost_per_1m <= max_input_price]
         if max_output_price is not None:
-            results = [m for m in results if 0 < m.output_cost_per_1m <= max_output_price]
+            results = [m for m in results if m.output_cost_per_1m <= max_output_price]
         if min_context is not None:
             results = [m for m in results if m.max_input_tokens >= min_context]
 
