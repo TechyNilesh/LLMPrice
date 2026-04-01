@@ -1,4 +1,15 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/TechyNilesh/LLMPrice/main/llmprice_hero.png" alt="LLMPrice Hero" width="100%">
+</p>
+
 # LLMPrice
+
+[![PyPI version](https://img.shields.io/pypi/v/llmprice)](https://pypi.org/project/llmprice/)
+[![Downloads](https://static.pepy.tech/badge/llmprice)](https://pepy.tech/project/llmprice)
+[![License: MIT](https://img.shields.io/pypi/l/llmprice)](https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE)
+[![Python](https://img.shields.io/pypi/pyversions/llmprice)](https://pypi.org/project/llmprice/)
+[![Data Source: LiteLLM](https://img.shields.io/badge/data%20source-LiteLLM-blue)](https://github.com/BerriAI/litellm)
+[![Auto Sync](https://img.shields.io/github/actions/workflow/status/TechyNilesh/LLMPrice/auto-sync.yml?label=daily%20sync)](https://github.com/TechyNilesh/LLMPrice/actions/workflows/auto-sync.yml)
 
 Fast, offline-first LLM pricing lookup for **2500+ models** across all major providers. Returns both Python objects and JSON.
 
