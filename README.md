@@ -4,12 +4,14 @@
 
 # LLMPrice
 
-[![PyPI version](https://img.shields.io/pypi/v/llmprice-kit)](https://pypi.org/project/llmprice-kit/)
-[![Downloads](https://static.pepy.tech/badge/llmprice-kit)](https://pepy.tech/project/llmprice-kit)
-[![License: MIT](https://img.shields.io/pypi/l/llmprice-kit)](https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE)
-[![Python](https://img.shields.io/pypi/pyversions/llmprice-kit)](https://pypi.org/project/llmprice-kit/)
-[![Data Source: LiteLLM](https://img.shields.io/badge/data%20source-LiteLLM-blue)](https://github.com/BerriAI/litellm)
-[![Auto Sync](https://img.shields.io/github/actions/workflow/status/TechyNilesh/LLMPrice/auto-sync.yml?label=daily%20sync)](https://github.com/TechyNilesh/LLMPrice/actions/workflows/auto-sync.yml)
+<p align="center">
+  <a href="https://pypi.org/project/llmprice-kit/"><img src="https://img.shields.io/pypi/v/llmprice-kit?style=for-the-badge" alt="PyPI"></a>
+  <a href="https://pepy.tech/project/llmprice-kit"><img src="https://img.shields.io/pepy/dt/llmprice-kit?style=for-the-badge&label=Downloads" alt="Downloads"></a>
+  <a href="https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.9+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.9+"></a>
+  <a href="https://github.com/BerriAI/litellm"><img src="https://img.shields.io/badge/data%20source-LiteLLM-blue?style=for-the-badge" alt="Data Source: LiteLLM"></a>
+  <a href="https://github.com/TechyNilesh/LLMPrice/actions/workflows/auto-sync.yml"><img src="https://img.shields.io/github/actions/workflow/status/TechyNilesh/LLMPrice/auto-sync.yml?style=for-the-badge&label=daily%20sync" alt="Auto Sync"></a>
+</p>
 
 Fast, offline-first LLM pricing lookup for **2500+ models** across all major providers. Returns both **Python objects** and **JSON**.
 
