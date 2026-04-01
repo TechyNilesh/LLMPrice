@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/TechyNilesh/LLMPrice/main/llmprice_hero.png" alt="LLMPrice Hero" width="100%">
 </p>
 
-# LLMPrice
+<h1 align="center">LLMPrice</h1>
 
 <p align="center">
   <a href="https://pypi.org/project/llmprice-kit/"><img src="https://img.shields.io/pypi/v/llmprice-kit" alt="PyPI"></a>
