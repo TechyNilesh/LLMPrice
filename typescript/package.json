@@ -1,0 +1,50 @@
+{
+  "name": "llmprice-kit",
+  "version": "2026.4.2",
+  "description": "Fast, offline-first LLM pricing lookup for 2500+ models. Get token costs, context windows, and capabilities.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "bin": {
+    "llmprice": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "cp ../data/model_prices.json data/ && npm run build"
+  },
+  "keywords": [
+    "llm",
+    "pricing",
+    "openai",
+    "anthropic",
+    "gemini",
+    "token",
+    "cost",
+    "gpt",
+    "claude"
+  ],
+  "author": "Nilesh Verma <me@nileshverma.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TechyNilesh/LLMPrice"
+  },
+  "homepage": "https://github.com/TechyNilesh/LLMPrice",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  }
+}
