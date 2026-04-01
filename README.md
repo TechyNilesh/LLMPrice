@@ -1,30 +1,35 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/TechyNilesh/LLMPrice/main/llmprice_hero.png" alt="LLMPrice Hero" width="100%">
+  <img src="https://raw.githubusercontent.com/TechyNilesh/LLMPrice/main/llmprice_hero_universal.png" alt="LLMPrice Hero" width="100%">
 </p>
 
 <h1 align="center">LLMPrice</h1>
-<p align="center"><em>A Python Library for LLM Pricing Lookup</em></p>
+<p align="center"><em>A Universal Library for LLM Pricing Lookup in Python & TypeScript</em></p>
 
 <p align="center">
-  <a href="https://pypi.org/project/llmprice-kit/"><img src="https://img.shields.io/pypi/v/llmprice-kit" alt="PyPI"></a>
-  <a href="https://pepy.tech/project/llmprice-kit"><img src="https://img.shields.io/pepy/dt/llmprice-kit?label=downloads" alt="Downloads"></a>
+  <a href="https://pypi.org/project/llmprice-kit/"><img src="https://img.shields.io/pypi/v/llmprice-kit?label=pypi" alt="PyPI"></a>
+  <a href="https://www.npmjs.com/package/llmprice-kit"><img src="https://img.shields.io/npm/v/llmprice-kit?label=npm" alt="npm"></a>
+  <a href="https://pepy.tech/project/llmprice-kit"><img src="https://img.shields.io/pepy/dt/llmprice-kit?label=pypi%20downloads" alt="PyPI Downloads"></a>
+  <a href="https://www.npmjs.com/package/llmprice-kit"><img src="https://img.shields.io/npm/dt/llmprice-kit?label=npm%20downloads" alt="npm Downloads"></a>
   <a href="https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
-  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.10+-blue?logo=python&logoColor=white" alt="Python 3.10+"></a>
   <a href="https://github.com/BerriAI/litellm"><img src="https://img.shields.io/badge/data%20source-LiteLLM-blue" alt="Data Source: LiteLLM"></a>
   <a href="https://github.com/TechyNilesh/LLMPrice/actions/workflows/auto-sync.yml"><img src="https://img.shields.io/github/actions/workflow/status/TechyNilesh/LLMPrice/auto-sync.yml?label=daily%20sync" alt="Auto Sync"></a>
 </p>
 
-Fast, offline-first LLM pricing lookup for **2500+ models** across all major providers. Returns both **Python objects** and **JSON**.
+Fast, offline-first LLM pricing lookup for **2500+ models** across all major providers. Available for both **Python** and **TypeScript/Node.js**.
 
-Data synced daily from [LiteLLM](https://github.com/BerriAI/litellm) via GitHub Actions. Published weekly to PyPI with date-based versioning.
+Data synced daily from [LiteLLM](https://github.com/BerriAI/litellm) via GitHub Actions. Published weekly with date-based versioning.
 
 ## Install
 
 ```bash
+# Python
 pip install llmprice-kit
+
+# TypeScript / Node.js
+npm install llmprice-kit
 ```
 
-## Quick Start
+## Python Usage
 
 ```python
 from llmprice import LLMPrice
@@ -40,7 +45,6 @@ print(model.supports_vision)     # True
 
 # Get as JSON dict
 data = lp.get_json("gpt-4o")
-# {"name": "gpt-4o", "provider": "openai", "input_cost_per_1m": 2.5, ...}
 
 # Compare models
 models = lp.compare(["gpt-4o", "claude-opus-4-20250514", "gemini/gemini-2.0-flash"])
@@ -51,33 +55,52 @@ for m in models:
 cheap_vision = lp.search(supports_vision=True, max_input_price=1.0)
 reasoning = lp.search(supports_reasoning=True, provider="anthropic")
 
-# List providers
-lp.providers()  # ['anthropic', 'openai', 'gemini', ...]
-
 # Auto-update mode (fetches fresh data if >1 day old)
 lp = LLMPrice(auto_update=True)
 ```
 
+## TypeScript Usage
+
+```typescript
+import { LLMPrice } from "llmprice-kit";
+
+const lp = new LLMPrice();
+
+// Get pricing as typed object
+const model = lp.get("gpt-4o");
+console.log(model.inputCostPer1m);   // 2.5
+console.log(model.outputCostPer1m);  // 10.0
+console.log(model.maxInputTokens);   // 128000
+console.log(model.supportsVision);   // true
+
+// Get as plain JSON
+const data = lp.getJson("gpt-4o");
+
+// Compare models
+const models = lp.compare(["gpt-4o", "claude-opus-4-20250514", "gemini/gemini-2.0-flash"]);
+models.forEach(m => {
+  console.log(`${m.name}: $${m.inputCostPer1m}/1M in, $${m.outputCostPer1m}/1M out`);
+});
+
+// Search by capabilities
+const cheapVision = lp.search({ supportsVision: true, maxInputPrice: 1.0 });
+const reasoning = lp.search({ supportsReasoning: true, provider: "anthropic" });
+
+// Async update
+await lp.update();
+```
+
 ## CLI
 
+Works with both `pip install` and `npm install`:
+
 ```bash
-# Get model pricing
 llmprice get gpt-4o
-
-# Compare models
 llmprice compare gpt-4o claude-opus-4-20250514
-
-# Search with filters
 llmprice search --provider openai --vision
 llmprice search --reasoning --max-input-price 5.0
-
-# List providers
 llmprice providers
-
-# Update data
 llmprice update
-
-# Check data freshness
 llmprice info
 ```
 
@@ -85,9 +108,9 @@ llmprice info
 
 - **Bundled data** — Ships with a pricing snapshot, works offline with zero latency
 - **Auto-sync** — GitHub repo updated daily from LiteLLM upstream
-- **Weekly PyPI releases** — Published every Monday with date-based version (e.g., `2026.4.6`)
-- **Auto-update mode** — `LLMPrice(auto_update=True)` fetches fresh data when local copy is >1 day old
-- **Dual output** — Every query returns Python dataclass objects or JSON dicts
+- **Weekly releases** — Published every Monday to both PyPI and npm with date-based version
+- **Auto-update mode** — Fetches fresh data when local copy is >1 day old
+- **Dual output** — Returns typed objects or JSON dicts in both languages
 
 ## Demo Notebook
 

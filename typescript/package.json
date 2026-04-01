@@ -23,7 +23,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "prepublishOnly": "cp ../README.md . && cp ../data/model_prices.json data/ && npm run build"
+    "prepublishOnly": "cp ../data/model_prices.json data/ && npm run build"
   },
   "keywords": [
     "llm",
