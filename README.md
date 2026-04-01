@@ -4,10 +4,10 @@
 
 # LLMPrice
 
-[![PyPI version](https://img.shields.io/pypi/v/llmprice)](https://pypi.org/project/llmprice/)
-[![Downloads](https://static.pepy.tech/badge/llmprice)](https://pepy.tech/project/llmprice)
-[![License: MIT](https://img.shields.io/pypi/l/llmprice)](https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE)
-[![Python](https://img.shields.io/pypi/pyversions/llmprice)](https://pypi.org/project/llmprice/)
+[![PyPI version](https://img.shields.io/pypi/v/llmprice-kit)](https://pypi.org/project/llmprice/)
+[![Downloads](https://static.pepy.tech/personalized-badge/llmprice-kit?period=total&units=international_system&left_color=grey&right_color=blue&left_text=downloads)](https://pepy.tech/project/llmprice-kit)
+[![License: MIT](https://img.shields.io/pypi/l/llmprice-kit)](https://github.com/TechyNilesh/LLMPrice/blob/main/LICENSE)
+[![Python](https://img.shields.io/pypi/pyversions/llmprice-kit)](https://pypi.org/project/llmprice/)
 [![Data Source: LiteLLM](https://img.shields.io/badge/data%20source-LiteLLM-blue)](https://github.com/BerriAI/litellm)
 [![Auto Sync](https://img.shields.io/github/actions/workflow/status/TechyNilesh/LLMPrice/auto-sync.yml?label=daily%20sync)](https://github.com/TechyNilesh/LLMPrice/actions/workflows/auto-sync.yml)
 
@@ -18,7 +18,7 @@ Auto-synced daily from [LiteLLM](https://github.com/BerriAI/litellm) pricing dat
 ## Install
 
 ```bash
-pip install llmprice
+pip install llmprice-kit
 ```
 
 ## Quick Start
@@ -82,7 +82,7 @@ llmprice info
 
 - **Bundled data**: Ships with a snapshot of pricing data — works offline, zero latency
 - **Auto-sync**: Optional background refresh from LiteLLM's upstream JSON
-- **Date versioning**: Each release is tagged by date (e.g., `2026.4.2`), so `pip install llmprice==2026.4.2` gives you that exact day's pricing
+- **Date versioning**: Each release is tagged by date (e.g., `2026.4.2`), so `pip install llmprice-kit==2026.4.2` gives you that exact day's pricing
 - **GitHub Actions**: Runs daily, checks for upstream changes, auto-publishes to PyPI
 
 ## Data Source
