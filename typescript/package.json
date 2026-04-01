@@ -14,7 +14,8 @@
   },
   "files": [
     "dist",
-    "data"
+    "data",
+    "README.md"
   ],
   "bin": {
     "llmprice": "dist/cli.js"
@@ -22,7 +23,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "prepublishOnly": "cp ../data/model_prices.json data/ && npm run build"
+    "prepublishOnly": "cp ../README.md . && cp ../data/model_prices.json data/ && npm run build"
   },
   "keywords": [
     "llm",

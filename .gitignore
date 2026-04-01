@@ -10,6 +10,10 @@ wheels/
 # TypeScript
 node_modules/
 typescript/dist/
+typescript/README.md
+
+# Python build copy
+python/README.md
 
 # OS
 .DS_Store
