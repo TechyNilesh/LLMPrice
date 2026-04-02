@@ -75,9 +75,11 @@ llmprice info
 - **Auto-update mode** — `LLMPrice(auto_update=True)` fetches fresh data when local copy is >1 day old
 - **Dual output** — Every query returns Python dataclass objects or JSON dicts
 
-## Demo Notebook
+## Examples
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TechyNilesh/LLMPrice/blob/main/notebooks/llmprice_demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TechyNilesh/LLMPrice/blob/main/examples/python/llmprice_demo.ipynb)
+
+See [`examples/python/`](https://github.com/TechyNilesh/LLMPrice/tree/main/examples/python) for the full interactive notebook.
 
 ## Data Source
 

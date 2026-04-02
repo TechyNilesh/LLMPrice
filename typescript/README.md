@@ -75,6 +75,15 @@ llmprice info
 - **Fully typed** — Complete TypeScript definitions with ESM and CJS exports
 - **Dual output** — Returns typed `ModelPrice` objects or plain JSON
 
+## Examples
+
+```bash
+cd examples/typescript
+npm install && npx tsx basic.ts
+```
+
+See [`examples/typescript/`](https://github.com/TechyNilesh/LLMPrice/tree/main/examples/typescript) for runnable `basic.ts` and `advanced.ts` examples.
+
 ## Data Source
 
 Pricing data from [LiteLLM](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json) — **2500+ models** from **100+ providers** including OpenAI, Anthropic, Google, AWS Bedrock, Azure, DeepSeek, Mistral, and more.

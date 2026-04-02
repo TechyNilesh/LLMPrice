@@ -1,0 +1,11 @@
+{
+  "name": "llmprice-examples",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "llmprice-kit": "latest"
+  },
+  "devDependencies": {
+    "tsx": "^4.0.0"
+  }
+}

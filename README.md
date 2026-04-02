@@ -112,11 +112,20 @@ llmprice info
 - **Auto-update mode** — Fetches fresh data when local copy is >1 day old
 - **Dual output** — Returns typed objects or JSON dicts in both languages
 
-## Demo Notebook
+## Examples
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TechyNilesh/LLMPrice/blob/main/notebooks/llmprice_demo.ipynb)
+**Python** — Interactive Colab notebook with all features:
 
-Try all features interactively in Google Colab — no setup needed.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TechyNilesh/LLMPrice/blob/main/examples/python/llmprice_demo.ipynb)
+
+**TypeScript** — Runnable examples:
+
+```bash
+cd examples/typescript
+npm install && npx tsx basic.ts
+```
+
+See [`examples/python/`](examples/python/) and [`examples/typescript/`](examples/typescript/) for full code.
 
 ## Data Source
 
