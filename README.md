@@ -129,7 +129,7 @@ See [`examples/python/`](examples/python/) and [`examples/typescript/`](examples
 
 ## Data Source
 
-Pricing data sourced from [LiteLLM's model_prices_and_context_window.json](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json), covering **2500+ models** from **100+ providers** including OpenAI, Anthropic, Google, AWS Bedrock, Azure, DeepSeek, Mistral, and more.
+Pricing data sourced from [LiteLLM](https://github.com/BerriAI/litellm), covering **2500+ models** from **100+ providers** including OpenAI, Anthropic, Google, AWS Bedrock, Azure, DeepSeek, Mistral, and more.
 
 ## FAQ
 
