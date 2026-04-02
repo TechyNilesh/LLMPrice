@@ -131,6 +131,28 @@ See [`examples/python/`](examples/python/) and [`examples/typescript/`](examples
 
 Pricing data sourced from [LiteLLM's model_prices_and_context_window.json](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json), covering **2500+ models** from **100+ providers** including OpenAI, Anthropic, Google, AWS Bedrock, Azure, DeepSeek, Mistral, and more.
 
+## FAQ
+
+**Why LLMPrice instead of using LiteLLM directly?**
+
+LiteLLM is an excellent LLM routing library, but it's a **heavy dependency** (~50+ sub-dependencies) designed for proxying API calls. If you just need pricing data, you're pulling in an entire LLM gateway. LLMPrice gives you the same pricing data in a **lightweight, zero-dependency package** (only `httpx` for optional auto-update).
+
+**Why not just download the JSON myself?**
+
+You could! But then you'd need to handle: parsing raw per-token floats into human-readable per-1M costs, keeping it updated, building search/filter logic, and supporting both Python and TypeScript. LLMPrice does all of that out of the box.
+
+**How fresh is the data?**
+
+The GitHub repo syncs from LiteLLM **daily**. New PyPI/npm releases go out **weekly** (every Monday). If you need same-day freshness, use `auto_update=True` (Python) or `await lp.update()` (TypeScript) to pull directly from GitHub.
+
+**What if LiteLLM changes their JSON format?**
+
+LLMPrice parses LiteLLM's format with safe defaults — unknown fields are ignored, missing fields default to `0` or `false`. If they make breaking changes, we'll adapt. You can also pin a specific version (e.g., `llmprice-kit==2026.4.2`) to lock pricing to a known date.
+
+**Can I use this offline?**
+
+Yes. Every release ships with bundled pricing data. No network calls are made unless you explicitly enable `auto_update` or call `update()`.
+
 ## Core Contributor
 
 <a href="https://github.com/TechyNilesh">
