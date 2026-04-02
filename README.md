@@ -29,6 +29,16 @@ pip install llmprice-kit
 npm install llmprice-kit
 ```
 
+**Install directly from GitHub (latest, unpublished):**
+
+```bash
+# Python
+pip install git+https://github.com/TechyNilesh/LLMPrice.git#subdirectory=python
+
+# TypeScript / Node.js
+npm install github:TechyNilesh/LLMPrice#main
+```
+
 ## Python Usage
 
 ```python
