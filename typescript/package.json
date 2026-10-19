@@ -1,6 +1,6 @@
 {
   "name": "llmprice-kit",
-  "version": "2026.10.12",
+  "version": "2026.10.19",
   "description": "Fast, offline-first LLM pricing lookup for 2500+ models. Get token costs, context windows, and capabilities.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
