@@ -70,6 +70,8 @@ jobs:
           # Update TypeScript version
           cd typescript && npm version "${VERSION}" --no-git-tag-version && cd ..
 
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add python/pyproject.toml typescript/package.json
           git commit -m "release: v${VERSION}"
           git tag "v${VERSION}"
