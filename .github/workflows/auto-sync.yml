@@ -50,14 +50,16 @@ jobs:
         run: |
           DAY=$(date -u +%u)
           FORCE="${{ inputs.force_publish }}"
-          if [ "$DAY" = "1" ] || [ "$FORCE" = "true" ]; then
+          CHANGED="${{ steps.diff.outputs.changed }}"
+          # Monday with new data, or a manual force (publishes even with no data change)
+          if { [ "$DAY" = "1" ] && [ "$CHANGED" = "true" ]; } || [ "$FORCE" = "true" ]; then
             echo "should_publish=true" >> "$GITHUB_OUTPUT"
           else
             echo "should_publish=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Set weekly version
-        if: steps.publish.outputs.should_publish == 'true' && steps.diff.outputs.changed == 'true'
+        if: steps.publish.outputs.should_publish == 'true'
         run: |
           VERSION=$(date -u +"%Y.%-m.%-d")
           echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
@@ -75,11 +77,11 @@ jobs:
 
       # Publish Python
       - name: Install uv
-        if: steps.publish.outputs.should_publish == 'true' && steps.diff.outputs.changed == 'true'
+        if: steps.publish.outputs.should_publish == 'true'
         uses: astral-sh/setup-uv@v4
 
       - name: Build and publish Python
-        if: steps.publish.outputs.should_publish == 'true' && steps.diff.outputs.changed == 'true'
+        if: steps.publish.outputs.should_publish == 'true'
         working-directory: python
         env:
           UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
@@ -89,14 +91,14 @@ jobs:
 
       # Publish TypeScript
       - name: Setup Node.js
-        if: steps.publish.outputs.should_publish == 'true' && steps.diff.outputs.changed == 'true'
+        if: steps.publish.outputs.should_publish == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
 
       - name: Build and publish TypeScript
-        if: steps.publish.outputs.should_publish == 'true' && steps.diff.outputs.changed == 'true'
+        if: steps.publish.outputs.should_publish == 'true'
         working-directory: typescript
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
